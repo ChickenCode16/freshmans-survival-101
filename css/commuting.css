@@ -23,8 +23,7 @@
 }
 
 .travel-compass-link {
-  display: block;
-  border-radius: 50%;
+  cursor: pointer;
 }
 
 #travelNeedle {
