@@ -522,6 +522,21 @@ button[type="button"]:hover, button[type="submit"]:hover {
   cursor: pointer;
 }
 
+.gpa-scale-list > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  background: var(--cream);
+}
+
+.scale-note {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
 .checklist input, .task-list input[type="checkbox"] {
   width: auto;
   accent-color: var(--green);
