@@ -786,7 +786,7 @@ footer {
 .home-columns {
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(320px, 0.75fr) minmax(0, 1.5fr);
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.3fr);
   align-items: center;
   gap: clamp(24px, 5vw, 64px);
 }
@@ -1006,14 +1006,13 @@ footer {
   }
 
   .map-column {
-    width: 104%;
-    margin-left: -2%;
+    width: 100%;
   }
 }
 
 @media (max-width: 500px) {
   .home-main {
-    width: 96%;
+    width: 90%;
     padding: 18px 0;
   }
 
