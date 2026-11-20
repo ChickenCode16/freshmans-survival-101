@@ -195,28 +195,14 @@
     </section>
 
     <section>
-      <h2 class="section-title">Freshman GPA / GWA Estimator</h2>
-      <p>Choose your school's grading scale, then enter each course grade and units. Blank rows are ignored; the result is weighted by units.</p>
-      <div class="tool-section">
-        <label for="gradingScale">Grading Scale</label>
-        <select id="gradingScale">
-          <option value="gwa">Philippine GWA (1.00–5.00; 1.00 is highest)</option>
-          <option value="gpa">4-point GPA (0.00–4.00; 4.00 is highest)</option>
-        </select>
-        <p id="scaleHint">Enter grades from 1.00 to 5.00; lower grades indicate stronger performance.</p>
-        <div class="grade-rows">
-          <div class="grade-row"><label for="courseGrade1">Course 1 grade <input id="courseGrade1" class="course-grade" type="number" min="1" max="5" step="0.01"></label><label for="courseUnits1">Units <input id="courseUnits1" class="course-units" type="number" min="0.5" step="0.5"></label></div>
-          <div class="grade-row"><label for="courseGrade2">Course 2 grade <input id="courseGrade2" class="course-grade" type="number" min="1" max="5" step="0.01"></label><label for="courseUnits2">Units <input id="courseUnits2" class="course-units" type="number" min="0.5" step="0.5"></label></div>
-          <div class="grade-row"><label for="courseGrade3">Course 3 grade <input id="courseGrade3" class="course-grade" type="number" min="1" max="5" step="0.01"></label><label for="courseUnits3">Units <input id="courseUnits3" class="course-units" type="number" min="0.5" step="0.5"></label></div>
-          <div class="grade-row"><label for="courseGrade4">Course 4 grade <input id="courseGrade4" class="course-grade" type="number" min="1" max="5" step="0.01"></label><label for="courseUnits4">Units <input id="courseUnits4" class="course-units" type="number" min="0.5" step="0.5"></label></div>
-          <div class="grade-row"><label for="courseGrade5">Course 5 grade <input id="courseGrade5" class="course-grade" type="number" min="1" max="5" step="0.01"></label><label for="courseUnits5">Units <input id="courseUnits5" class="course-units" type="number" min="0.5" step="0.5"></label></div>
-          <div class="grade-row"><label for="courseGrade6">Course 6 grade <input id="courseGrade6" class="course-grade" type="number" min="1" max="5" step="0.01"></label><label for="courseUnits6">Units <input id="courseUnits6" class="course-units" type="number" min="0.5" step="0.5"></label></div>
-          <div class="grade-row"><label for="courseGrade7">Course 7 grade <input id="courseGrade7" class="course-grade" type="number" min="1" max="5" step="0.01"></label><label for="courseUnits7">Units <input id="courseUnits7" class="course-units" type="number" min="0.5" step="0.5"></label></div>
-          <div class="grade-row"><label for="courseGrade8">Course 8 grade <input id="courseGrade8" class="course-grade" type="number" min="1" max="5" step="0.01"></label><label for="courseUnits8">Units <input id="courseUnits8" class="course-units" type="number" min="0.5" step="0.5"></label></div>
-        </div>
-        <button id="calculateGpa" type="button">Calculate GWA / GPA</button>
-        <p id="gpaResult" class="tool-result" aria-live="polite"></p>
-        <p id="gpaError" class="error-message" aria-live="polite"></p>
+      <h2 class="section-title">Understanding the Grading System</h2>
+      <p>Here is an example of a 4.00-to-1.00 GPA scale, with 4.00 as the highest mark. Grade meanings and passing cutoffs vary by school.</p>
+      <div class="card-grid">
+        <article class="card"><h3>4.00 — Excellent</h3><p>Shows outstanding achievement in the course.</p></article>
+        <article class="card"><h3>3.00 — Good</h3><p>Shows strong understanding of the course material.</p></article>
+        <article class="card"><h3>2.00 — Satisfactory</h3><p>Meets the course's main learning requirements.</p></article>
+        <article class="card"><h3>1.00 — Minimum Passing</h3><p>Meets the minimum standard to pass, where this scale is used.</p></article>
+        <article class="card card-wide"><h3>GWA and GPA</h3><p>Both describe academic performance across courses. Some Philippine colleges use a GWA scale where 1.00 is highest and 5.00 is failing—the reverse of this example. Check your syllabus or student portal for your school's scale and rules.</p></article>
       </div>
     </section>
     </section>
@@ -224,6 +210,5 @@
 
   <script src="guide-views.js"></script>
   <script src="enrollment.js"></script>
-  <script src="gwa.js"></script>
 </body>
 </html>
