@@ -61,7 +61,7 @@ nav > a[aria-current="page"] {
 .dropdown-menu {
   position: absolute;  top: 100%;  right: 0;  display: none;  width: 210px;  padding: 8px;  border: 2px solid var(--gold);  border-radius: 7px;  background: var(--brown);  box-shadow: 0 8px 18px rgba(90, 58, 20, 0.22);
 }
-.dropdown.open .dropdown-menu {
+.dropdown:hover .dropdown-menu, .dropdown:focus-within .dropdown-menu {
   display: block;
 }
 .dropdown-menu a {
@@ -267,42 +267,6 @@ button.document-toggle:hover, button.document-toggle:focus-visible {
 }
 .card p {
   margin: 0;
-}
-.content-tabs {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 8px;
-  margin-bottom: 12px;
-}
-.content-tab {
-  width: 100%;
-  min-height: 44px;
-  padding: 8px;
-  border: 2px solid var(--gold);
-  border-radius: 6px;
-  background: var(--brown);
-  color: white;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.2;
-  text-align: center;
-  white-space: normal;
-}
-.content-tab[aria-selected="true"] {
-  background: var(--coral);
-}
-.content-tab:focus-visible {
-  outline: 3px solid var(--coral);
-  outline-offset: 3px;
-}
-.content-panel {
-  padding: 17px;
-  border: 2px solid var(--gold);
-  border-radius: 8px;
-  background: var(--tan);
-}
-.content-panel[hidden] {
-  display: none;
 }
 .card-wide {
   grid-column: 1 / -1;
@@ -770,10 +734,5 @@ footer {
 @media (max-width: 350px) {
   .home-main .home-columns {
     gap: 32px;
-  }
-}
-@media (max-width: 767px) {
-  .content-tabs {
-    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
   }
 }
