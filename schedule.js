@@ -1,65 +1,85 @@
-// Element ids and classes needed:
-// taskInput
-// addTaskButton
-// taskList
-
-let taskInput = document.getElementById("taskInput");
-let addTaskButton = document.getElementById("addTaskButton");
-let taskList = document.getElementById("taskList");
+const taskForm = document.getElementById("taskForm");
+const taskInput = document.getElementById("taskInput");
+const taskList = document.getElementById("taskList");
+const taskStatus = document.getElementById("taskStatus");
 let tasks = [];
+let storageWarning = "";
 
-// This block restores saved tasks if browser storage is available.
 try {
-  let savedTasks = localStorage.getItem("scheduleTasks");
+  const savedTasks = localStorage.getItem("scheduleTasks");
   if (savedTasks) {
-    let parsedTasks = JSON.parse(savedTasks);
-    if (Array.isArray(parsedTasks)) {
-      tasks = parsedTasks;
+    try {
+      const parsedTasks = JSON.parse(savedTasks);
+      if (Array.isArray(parsedTasks)) {
+        tasks = parsedTasks.filter(function (task) {
+          return task && typeof task.text === "string" && typeof task.done === "boolean";
+        });
+        if (tasks.length !== parsedTasks.length) {
+          storageWarning = "Some saved tasks were invalid and could not be loaded.";
+        }
+      } else {
+        storageWarning = "Saved tasks could not be read. You can start a new list.";
+      }
+    } catch (error) {
+      storageWarning = "Saved tasks could not be read. You can start a new list.";
     }
   }
 } catch (error) {
-  tasks = [];
+  storageWarning = "Saving is unavailable in this browser; tasks will be lost when you leave this page.";
 }
 
-// This block saves the current task list.
-function saveTasks() {
+function saveTasks(message) {
   try {
     localStorage.setItem("scheduleTasks", JSON.stringify(tasks));
+    storageWarning = "";
+    taskStatus.textContent = message;
   } catch (error) {
-    // Tasks still work for this page visit if storage is unavailable.
+    storageWarning = "Saving is unavailable in this browser; tasks will be lost when you leave this page.";
+    taskStatus.textContent = storageWarning;
   }
 }
 
-// This block draws tasks, checkboxes, and delete buttons.
 function renderTasks() {
-  taskList.innerHTML = "";
+  taskList.replaceChildren();
 
-  tasks.forEach(function (task, index) {
-    let item = document.createElement("li");
-    let label = document.createElement("label");
-    let checkbox = document.createElement("input");
-    let text = document.createElement("span");
-    let deleteButton = document.createElement("button");
+  if (tasks.length === 0) {
+    const emptyItem = document.createElement("li");
+    emptyItem.className = "task-empty";
+    emptyItem.textContent = "No tasks yet. Add one above.";
+    taskList.appendChild(emptyItem);
+    return;
+  }
+
+  tasks.forEach(function (task) {
+    const item = document.createElement("li");
+    const label = document.createElement("label");
+    const checkbox = document.createElement("input");
+    const text = document.createElement("span");
+    const deleteButton = document.createElement("button");
 
     checkbox.type = "checkbox";
     checkbox.checked = task.done;
+    checkbox.setAttribute("aria-label", "Mark " + task.text + " complete");
     text.textContent = task.text;
     deleteButton.type = "button";
     deleteButton.textContent = "Delete";
+    deleteButton.setAttribute("aria-label", "Delete " + task.text);
 
     if (task.done) {
       item.classList.add("done");
     }
 
     checkbox.addEventListener("change", function () {
-      tasks[index].done = checkbox.checked;
-      saveTasks();
+      task.done = checkbox.checked;
+      saveTasks("Task updated.");
       renderTasks();
     });
 
     deleteButton.addEventListener("click", function () {
-      tasks.splice(index, 1);
-      saveTasks();
+      tasks = tasks.filter(function (currentTask) {
+        return currentTask !== task;
+      });
+      saveTasks("Task deleted.");
       renderTasks();
     });
 
@@ -71,27 +91,24 @@ function renderTasks() {
   });
 }
 
-// This block adds a non-empty task.
-function addTask() {
-  let text = taskInput.value.trim();
+taskForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const text = taskInput.value.trim();
 
-  if (text === "") {
+  if (!text) {
+    taskStatus.textContent = "Enter a task before adding it.";
+    taskInput.focus();
     return;
   }
 
   tasks.push({ text: text, done: false });
   taskInput.value = "";
-  saveTasks();
+  saveTasks("Task added.");
   renderTasks();
   taskInput.focus();
-}
-
-addTaskButton.addEventListener("click", addTask);
-
-taskInput.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    addTask();
-  }
 });
 
 renderTasks();
+if (storageWarning) {
+  taskStatus.textContent = storageWarning;
+}

@@ -1,7 +1,3 @@
-// Element ids needed:
-// allowanceInput, daysInput, dailySpendingInput, setBudgetButton
-// dailyBudget, estimatedSavings, savingsMessage, budgetError
-
 let allowanceInput = document.getElementById("allowanceInput");
 let daysInput = document.getElementById("daysInput");
 let dailySpendingInput = document.getElementById("dailySpendingInput");
@@ -12,7 +8,6 @@ let savingsMessage = document.getElementById("savingsMessage");
 let budgetError = document.getElementById("budgetError");
 let budget = { allowance: 0, days: 1, dailySpending: null };
 
-// This block restores the saved budget values.
 try {
   let savedBudget = localStorage.getItem("freshmanBudget");
   if (savedBudget) {
@@ -36,22 +31,20 @@ try {
 allowanceInput.value = budget.allowance || "";
 daysInput.value = budget.allowance ? budget.days : "";
 dailySpendingInput.value = budget.dailySpending === null ? "" : budget.dailySpending;
+saveBudget();
 
-// This block saves the current budget values.
 function saveBudget() {
   try {
     localStorage.setItem("freshmanBudget", JSON.stringify(budget));
   } catch (error) {
-    // The planner remains usable for the current page visit.
+    
   }
 }
 
-// This block formats numbers as pesos with two decimal places.
 function peso(amount) {
   return "₱" + amount.toFixed(2);
 }
 
-// This block updates the daily allowance and savings estimate.
 function updateDailyBudget() {
   let dailyAllowance = budget.allowance / budget.days;
   dailyBudget.textContent = peso(dailyAllowance);
@@ -73,7 +66,6 @@ function updateDailyBudget() {
   savingsMessage.textContent = "";
 }
 
-// This block validates and saves the allowance and day count.
 setBudgetButton.addEventListener("click", function () {
   let allowanceText = allowanceInput.value.trim();
   let daysText = daysInput.value.trim();

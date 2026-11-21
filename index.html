@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=nav-polish-1">
+  <link rel="stylesheet" href="css/style.css?v=homepage-visual-31">
 </head>
 
 <body>
@@ -21,11 +21,11 @@
       <a href="info.html">Info</a>
 
       <div class="dropdown">
-        <button class="dropdown-button" type="button" aria-haspopup="true">
-          Pages
+        <button class="dropdown-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="guides-menu">
+          Guides
         </button>
 
-        <div class="dropdown-menu">
+        <div class="dropdown-menu" id="guides-menu">
           <a href="info.html#enrollment">Enrollment</a>
           <a href="info.html#syllabus">Syllabus</a>
           <a href="commuting.html#transportation">Transportation</a>
@@ -39,7 +39,7 @@
   <main class="home-main">
     <section class="home-intro">
       <p class="eyebrow">Your Freshman Voyage</p>
-      <h1>Chart Your Course</h1>
+      <h1>Your journey starts here!</h1>
       <p>Choose a destination on the compass or map to explore your college guides.</p>
     </section>
 
@@ -51,7 +51,6 @@
                role="img"
                aria-label="Compass with links to five freshman guides">
 
-            <!-- Compass case and face -->
             <circle cx="250" cy="250" r="238" fill="#84481a"/>
             <circle cx="250" cy="250" r="224" fill="#5a3a14"/>
             <circle cx="250" cy="250" r="216" fill="#f2deb4"
@@ -61,7 +60,6 @@
             <circle cx="250" cy="250" r="180" fill="none"
                     stroke="#5a3a14" stroke-width="2"/>
 
-            <!-- Compass tick marks -->
             <g stroke="#5a3a14" stroke-width="2">
               <line x1="250" y1="70" x2="250" y2="88"/>
               <line x1="250" y1="412" x2="250" y2="430"/>
@@ -93,7 +91,6 @@
               <g transform="rotate(345 250 250)"><line x1="250" y1="70" x2="250" y2="82"/></g>
             </g>
 
-            <!-- This compass rose turns when a guide link is clicked -->
             <g id="compassRose"
                stroke="#5a3a14"
                stroke-width="2.5"
@@ -108,7 +105,6 @@
               <path d="M134 134 L239 225 L250 250 L225 239 Z" fill="#84481a"/>
             </g>
 
-            <!-- Direction letters stay upright as the rose turns -->
             <g class="compass-letter" fill="#5a3a14" text-anchor="middle">
               <text x="250" y="63.91">N</text>
               <text x="434.59" y="258">E</text>
@@ -116,7 +112,6 @@
               <text x="60.11" y="258">W</text>
             </g>
 
-            <!-- Center of the compass -->
             <circle cx="250" cy="250" r="21" fill="#84481a"
                     stroke="#e3c48a" stroke-width="4"/>
             <circle cx="250" cy="250" r="6" fill="#d9735f"/>
@@ -161,7 +156,6 @@
                role="img"
                aria-label="World map showing the five freshman guide destinations">
 
-            <!-- Fallback land shapes remain visible if the map image cannot load. -->
             <rect width="1920" height="1080" rx="14" fill="#e4c77d"/>
 
             <g aria-hidden="true" transform="scale(2.1381 1.9048)">
@@ -193,15 +187,68 @@
         </div>
       </div>
     </section>
+
+    <section class="guide-cards" aria-labelledby="guide-cards-title">
+      <h2 id="guide-cards-title">Choose Your Next Step</h2>
+      <div class="guide-card-grid">
+        <article class="guide-card">
+          <span class="guide-card-heading">
+            <span class="guide-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v5h5M10 13h5M10 17h6"/></svg>
+            </span>
+            <span class="guide-card-title">Enrollment</span>
+          </span>
+          <span class="guide-card-description">Start enrollment.</span>
+        </article>
+        <article class="guide-card">
+          <span class="guide-card-heading">
+            <span class="guide-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 5h6a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H3z"/><path d="M21 5h-6a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h6z"/></svg>
+            </span>
+            <span class="guide-card-title">Syllabus</span>
+          </span>
+          <span class="guide-card-description">Know your courses.</span>
+        </article>
+        <article class="guide-card">
+          <span class="guide-card-heading">
+            <span class="guide-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0z"/><circle cx="12" cy="10" r="2.2"/></svg>
+            </span>
+            <span class="guide-card-title">Transportation</span>
+          </span>
+          <span class="guide-card-description">Plan your route.</span>
+        </article>
+        <article class="guide-card">
+          <span class="guide-card-heading">
+            <span class="guide-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5c-.7-.8-1.6-1.2-3-1.2-1.6 0-2.7.8-2.7 2 0 3 5.8 1.2 5.8 4.3 0 1.3-1.2 2.3-3 2.3-1.3 0-2.5-.4-3.4-1.3M12 5.5v13"/></svg>
+            </span>
+            <span class="guide-card-title">Budget</span>
+          </span>
+          <span class="guide-card-description">Track your spending.</span>
+        </article>
+        <article class="guide-card">
+          <span class="guide-card-heading">
+            <span class="guide-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            <span class="guide-card-title">Time Management</span>
+          </span>
+          <span class="guide-card-description">Plan your day.</span>
+        </article>
+      </div>
+    </section>
   </main>
 
+  <footer>DLSU - Dasmarinas</footer>
+
   <script>
-    // This block saves references to the compass rose and navigation links.
+  
     const compassRose = document.getElementById("compassRose");
     const compassLinks = document.querySelectorAll(".compass-button");
     let compassIsMoving = false;
 
-    // This block spins the compass before following the selected link.
+ 
     compassLinks.forEach(function (link) {
       link.addEventListener("click", function (event) {
         if (compassIsMoving) {
@@ -222,7 +269,6 @@
       });
     });
 
-    // This block restores the compass if the visitor returns with Back.
     window.addEventListener("pageshow", function () {
       compassIsMoving = false;
       compassRose.style.transition = "none";
@@ -234,5 +280,6 @@
       }, 50);
     });
   </script>
+  <script src="navigation.js"></script>
 </body>
 </html>

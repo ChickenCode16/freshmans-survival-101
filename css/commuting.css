@@ -7,3 +7,35 @@
 .commuting-content {
   min-width: 0;
 }
+
+.travel-time-estimates {
+  margin-top: 28px;
+}
+
+.travel-time-card {
+  padding: 0;
+}
+
+.travel-time-card > summary {
+  cursor: pointer;
+  padding: 17px;
+}
+
+.travel-time-card > summary h3 {
+  margin: 0;
+}
+
+.travel-time-card[open] > summary {
+  padding-bottom: 8px;
+}
+
+.travel-time-card > p {
+  margin: 0;
+  padding: 0 17px 17px;
+}
+
+.travel-time-note {
+  margin: 5px 0 0;
+  font-size: 12px;
+  font-style: italic;
+}

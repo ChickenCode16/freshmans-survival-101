@@ -1,1089 +1,779 @@
 :root {
-  --cream: #f2deb4;
-  --brown: #84481a;
-  --dark: #5a3a14;
-  --tan: #cdb28a;
-  --gold: #e3c48a;
-  --green: #3e6b2e;
-  --coral: #d9735f;
-  --text: #6b4a2b;
+  --cream: #f2deb4;  --brown: #84481a;  --dark: #5a3a14;  --tan: #cdb28a;  --gold: #e3c48a;  --green: #3e6b2e;  --coral: #d9735f;  --text: #6b4a2b;
 }
-
 * {
   box-sizing: border-box;
 }
-
 html {
-  min-height: 100%;
-  scroll-behavior: smooth;
+  min-height: 100%;  scroll-behavior: smooth;
 }
-
 body {
-  min-height: 100vh;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  background: var(--cream);
-  color: var(--text);
-  font-family: "Montserrat", Arial, sans-serif;
-  text-transform: uppercase;
-  line-height: 1.6;
+  min-height: 100vh;  margin: 0;  display: flex;  flex-direction: column;  background: linear-gradient(135deg, #f8ebd0 0%, var(--cream) 52%, #ead1a2 100%);  color: var(--text);  font-family: "Montserrat", Arial, sans-serif;  text-transform: uppercase;  line-height: 1.6;
 }
-
 h1, h2, h3, .logo, nav, .compass-button, .compass-letter {
   font-family: "Cinzel", Georgia, serif;
 }
-
 button, input {
-  font: inherit;
-  text-transform: uppercase;
+  font: inherit;  text-transform: uppercase;
 }
-
 button, a, input {
   outline: none;
 }
-
 button:focus-visible, a:focus-visible, input:focus-visible {
-  outline: 3px solid var(--coral);
-  outline-offset: 3px;
+  outline: 3px solid var(--coral);  outline-offset: 3px;
 }
-
 button {
   cursor: pointer;
 }
-
+button, .top-bar nav > a, .dropdown-menu a, .compass-button {
+  font-family: "Cinzel", Georgia, serif;
+}
 .top-bar {
-  position: relative;
-  z-index: 10;
-  min-height: 58px;
-  padding: 9px 5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  border-bottom: 5px solid var(--dark);
-  background: linear-gradient(110deg, var(--dark), var(--brown) 55%, #704014);
-  color: white;
-  box-shadow: 0 3px 9px rgba(90, 58, 20, 0.18);
+  position: relative;  z-index: 10;  min-height: 58px;  padding: 9px 5%;  display: flex;  align-items: center;  justify-content: space-between;  gap: 20px;  border-bottom: 5px solid var(--dark);  background: var(--brown);  color: white;  box-shadow: 0 3px 9px rgba(90, 58, 20, 0.18);
 }
-
 .logo {
-  color: white;
-  font-size: 17px;
-  font-weight: 700;
-  text-decoration: none;
+  color: white;  font-size: 17px;  font-weight: 700;  text-decoration: none;
 }
-
 nav {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: flex;  align-items: center;  gap: 10px;
 }
-
 nav > a, .dropdown-button {
-  min-height: 36px;
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 12px;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  color: var(--cream);
-  font-size: 12px;
-  text-decoration: none;
-  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+  min-height: 36px;  display: inline-flex;  align-items: center;  padding: 7px 12px;  border: 1px solid transparent;  border-radius: 999px;  color: var(--cream);  font-size: 12px;  text-decoration: none;  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
 }
-
-nav > a:hover,
-.dropdown-button:hover,
-.dropdown:hover .dropdown-button,
-.dropdown:focus-within .dropdown-button {
-  border-color: var(--gold);
-  background: rgba(90, 58, 20, 0.45);
-  color: var(--gold);
+nav > a:hover, .dropdown-button:hover, .dropdown:hover .dropdown-button, .dropdown:focus-within .dropdown-button {
+  border-color: var(--gold);  background: rgba(90, 58, 20, 0.45);  color: var(--gold);
 }
-
 nav > a[aria-current="page"] {
-  border-color: var(--gold);
-  background: var(--dark);
-  color: var(--gold);
+  border-color: var(--gold);  background: var(--dark);  color: var(--gold);
 }
-
 .logo:hover {
   color: var(--gold);
 }
-
 .dropdown {
   position: relative;
 }
-
 .dropdown-button {
   background: transparent;
 }
-
 .dropdown-button::after {
-  width: 0;
-  height: 0;
-  margin-left: 7px;
-  border: 4px solid transparent;
-  border-top-color: currentColor;
-  content: "";
-  translate: 0 2px;
+  width: 0;  height: 0;  margin-left: 7px;  border: 4px solid transparent;  border-top-color: currentColor;  content: "";  translate: 0 2px;
 }
-
 .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  display: none;
-  width: 210px;
-  padding: 8px;
-  border: 2px solid var(--gold);
-  border-radius: 7px;
-  background: var(--brown);
-  box-shadow: 0 8px 18px rgba(90, 58, 20, 0.22);
+  position: absolute;  top: 100%;  right: 0;  display: none;  width: 210px;  padding: 8px;  border: 2px solid var(--gold);  border-radius: 7px;  background: var(--brown);  box-shadow: 0 8px 18px rgba(90, 58, 20, 0.22);
 }
-
-.dropdown:hover .dropdown-menu,
-.dropdown:focus-within .dropdown-menu {
+.dropdown.open .dropdown-menu {
   display: block;
 }
-
 .dropdown-menu a {
-  display: block;
-  padding: 9px 11px;
-  border-radius: 4px;
-  color: white;
-  font-size: 12px;
-  text-decoration: none;
+  display: block;  padding: 9px 11px;  border-radius: 4px;  color: white;  font-size: 12px;  text-decoration: none;
 }
-
 .dropdown-menu a:hover {
   background: var(--coral);
 }
-
 main {
   flex: 1;
 }
-
 .home-main, .page-main {
-  width: min(1120px, 92%);
-  margin: 0 auto;
-  padding: 34px 0 50px;
+  width: min(1120px, 92%);  margin: 0 auto;  padding: 34px 0 50px;
 }
-
+.guide-layout {
+  display: grid;  grid-template-columns: minmax(180px, 230px) minmax(0, 1fr);  align-items: start;  gap: clamp(24px, 4vw, 48px);
+}
+.guide-layout:not(.has-compass) {
+  display: block;
+}
+.guide-content, .commuting-content {
+  min-width: 0;
+}
+.guide-compass {
+  position: sticky;  top: 24px;  width: min(220px, 100%);  margin: 8px auto 0;  display: grid;  justify-items: center;  text-align: center;
+}
+.guide-compass[hidden] {
+  display: none;
+}
+.guide-compass svg {
+  display: block;  width: 100%;  height: auto;
+}
+.guide-compass-rim {
+  fill: var(--cream);  stroke: var(--brown);  stroke-width: 7;
+}
+.guide-compass-inner {
+  fill: none;  stroke: #e3c48a;  stroke-width: 3;
+}
+.guide-compass-point {
+  fill: #cdb28a;  stroke: #e3c48a;  stroke-width: 2;
+}
+.guide-compass-needle {
+  fill: var(--green);  stroke: #e3c48a;  stroke-width: 2;  transform-box: view-box;  transform-origin: 110px 110px;  transition: transform 250ms ease, opacity 250ms ease;
+}
+.guide-compass[data-direction="east"] .guide-compass-needle {
+  transform: rotate(90deg);
+}
+.guide-compass[data-direction="south"] .guide-compass-needle {
+  transform: rotate(180deg);
+}
+.guide-compass[data-direction="west"] .guide-compass-needle {
+  transform: rotate(270deg);
+}
+.guide-compass[data-direction="center"] .guide-compass-needle {
+  opacity: 0;
+}
+.guide-compass-label {
+  fill: var(--brown);  font-family: "Cinzel", Georgia, serif;  font-size: 15px;  font-weight: 700;  text-anchor: middle;
+}
+.guide-compass-home {
+  position: absolute;  top: 110px;  left: 50%;  width: 82px;  height: 82px;  translate: -50% -50%;  display: grid;  place-content: center;  border: 2px solid var(--gold);  border-radius: 50%;  background: var(--brown);  box-shadow: 0 5px 12px rgba(90, 58, 20, 0.2);  color: white;  font-family: "Cinzel", Georgia, serif;  font-size: 10px;  font-weight: 700;  line-height: 1.35;  text-decoration: none;  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.guide-compass-home:hover, .guide-compass-home:focus-visible, .guide-compass[data-direction="center"] .guide-compass-home {
+  border-color: var(--green);  box-shadow: 0 0 0 4px rgba(63, 107, 69, 0.22);
+}
+.guide-compass-hint {
+  margin: 10px 0 0;  color: var(--brown);  font-size: 10px;
+}
+.guide-view[data-compass-direction] {
+  scroll-margin-top: 290px;
+}
 .home-main {
-  width: min(1280px, 94%);
-  padding-top: 24px;
+  width: min(1280px, 94%);  padding-top: 24px;
 }
-
 .home-intro {
-  max-width: 760px;
-  margin: 0 auto 20px;
-  text-align: center;
+  max-width: 760px;  margin: 0 auto 20px;  text-align: center;
 }
-
 .home-intro h1 {
-  margin: 4px 0 7px;
-  color: var(--dark);
-  font-size: clamp(29px, 4vw, 46px);
-  line-height: 1.2;
+  margin: 4px 0 7px;  color: var(--dark);  font-size: clamp(27px, 3.6vw, 42px);  line-height: 1.2;
 }
-
 .home-intro > p:last-child {
   margin: 0;
 }
-
 .eyebrow {
-  margin: 0 0 4px;
-  color: var(--green);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.7px;
+  margin: 0 0 4px;  color: var(--green);  font-size: 11px;  font-weight: 700;  letter-spacing: 1.7px;
 }
-
 .home-columns {
-  min-height: 440px;
-  display: grid;
-  grid-template-columns: minmax(330px, 0.85fr) minmax(0, 1.35fr);
-  align-items: center;
-  gap: clamp(26px, 5vw, 68px);
+  min-height: 440px;  display: grid;  grid-template-columns: minmax(330px, 0.85fr) minmax(0, 1.35fr);  align-items: center;  gap: clamp(26px, 5vw, 68px);
 }
-
 .compass-column, .map-column {
   min-width: 0;
 }
-
 .compass-wrapper {
-  position: relative;
-  width: min(410px, 100%);
-  aspect-ratio: 1;
-  margin: 0 auto;
+  position: relative;  width: min(410px, 100%);  aspect-ratio: 1;  margin: 0 auto;
 }
-
 .compass-svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  transform-origin: center;
-  transition: transform 600ms ease;
-  filter: drop-shadow(0 8px 10px rgba(90, 58, 20, 0.2));
+  display: block;  width: 100%;  height: 100%;  transform-origin: center;  transition: transform 600ms ease;  filter: drop-shadow(0 8px 10px rgba(90, 58, 20, 0.2));
 }
-
 .compass-letter {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 24px;  font-weight: 700;
 }
-
-/* Small oval buttons; translate keeps their placement steady during hover zoom. */
 .compass-button {
-  position: absolute;
-  z-index: 3;
-  min-height: 30px;
-  padding: 5px 9px;
-  border: 2px solid var(--gold);
-  border-radius: 999px;
-  background: var(--brown);
-  color: white;
-  font-size: 8px;
-  font-weight: 700;
-  line-height: 1.1;
-  white-space: nowrap;
-  box-shadow: 0 3px 7px rgba(90, 58, 20, 0.22);
-  transition: transform 150ms ease, background 150ms ease;
+  position: absolute;  z-index: 3;  min-height: 30px;  padding: 5px 9px;  border: 2px solid var(--gold);  border-radius: 999px;  background: var(--brown);  color: white;  font-size: 8px;  font-weight: 700;  line-height: 1.1;  white-space: nowrap;  box-shadow: 0 3px 7px rgba(90, 58, 20, 0.22);  transition: transform 150ms ease, background 150ms ease;
 }
-
 .compass-north {
-  top: -5px;
-  left: 50%;
-  translate: -50% 0;
+  top: -5px;  left: 50%;  translate: -50% 0;
 }
-
 .compass-south {
-  bottom: -5px;
-  left: 50%;
-  translate: -50% 0;
+  bottom: -5px;  left: 50%;  translate: -50% 0;
 }
-
 .compass-west {
-  top: 50%;
-  left: -12px;
-  translate: -50% -50%;
+  top: 50%;  left: -12px;  translate: -50% -50%;
 }
-
 .compass-east {
-  top: 50%;
-  right: -12px;
-  translate: 50% -50%;
+  top: 50%;  right: -12px;  translate: 50% -50%;
 }
-
 .compass-center {
-  top: 50%;
-  left: 50%;
-  min-width: 104px;
-  translate: -50% -50%;
+  top: 50%;  left: 50%;  min-width: 104px;  translate: -50% -50%;
 }
-
 .compass-button:hover, .compass-button.active {
-  background: var(--coral);
-  transform: scale(1.06);
+  background: var(--coral);  transform: scale(1.06);
 }
-
 .compass-caption, .map-caption {
-  margin: 8px 0 0;
-  font-size: 10px;
-  text-align: center;
+  margin: 8px 0 0;  font-size: 10px;  text-align: center;
 }
-
 .map-heading {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  margin-bottom: 10px;
+  display: flex;  align-items: center;  gap: 11px;  margin-bottom: 10px;
 }
-
 .map-heading h2, .map-heading p {
   margin: 0;
 }
-
 .map-heading h2 {
-  color: var(--dark);
-  font-size: 22px;
+  color: var(--dark);  font-size: 22px;
 }
-
 .map-stamp {
-  width: 40px;
-  height: 40px;
-  display: grid;
-  flex: 0 0 auto;
-  place-items: center;
-  border: 2px solid var(--gold);
-  border-radius: 50%;
-  background: var(--brown);
-  color: var(--gold);
-  font-size: 20px;
+  width: 40px;  height: 40px;  display: grid;  flex: 0 0 auto;  place-items: center;  border: 2px solid var(--gold);  border-radius: 50%;  background: var(--brown);  color: var(--gold);  font-size: 20px;
 }
-
 .map-frame {
-  overflow: hidden;
-  padding: 6px;
-  border: 8px ridge var(--brown);
-  border-radius: 16px;
-  background: linear-gradient(135deg, #edcf91, #a76b2c 48%, #edcf91);
-  box-shadow:
-    inset 0 0 0 2px var(--gold),
-    0 8px 15px rgba(90, 58, 20, 0.22);
+  overflow: hidden;  padding: 6px;  border: 8px ridge var(--brown);  border-radius: 16px;  background: linear-gradient(135deg, #edcf91, #a76b2c 48%, #edcf91);  box-shadow: inset 0 0 0 2px var(--gold), 0 8px 15px rgba(90, 58, 20, 0.22);
 }
-
 .map-svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1920 / 1080;
+  display: block;  width: 100%;  height: auto;  aspect-ratio: 1920 / 1080;
 }
-
 .map-fallback {
   pointer-events: none;
 }
-
 .map-label {
-  fill: var(--dark);
-  font-family: "Cinzel", Georgia, serif;
-  font-size: 15px;
-  font-weight: 700;
-  paint-order: stroke;
-  stroke: var(--cream);
-  stroke-width: 6px;
-  stroke-linejoin: round;
-  pointer-events: none;
+  fill: var(--dark);  font-family: "Cinzel", Georgia, serif;  font-size: 40px;  font-weight: 700;  paint-order: stroke;  stroke: var(--cream);  stroke-width: 2px;  stroke-linejoin: round;  text-anchor: middle;  pointer-events: none;
 }
-
 .map-label-long {
-  font-size: 13px;
+  font-size: 32px;
 }
-
-.map-hotspot {
-  fill: var(--coral);
-  stroke: var(--brown);
-  stroke-width: 3;
-  transition: fill 150ms ease, stroke 150ms ease;
+.map-label-transportation {
+  font-size: 36px;
 }
-
-.map-svg a:hover .map-hotspot,
-.map-svg a:focus-visible .map-hotspot {
-  fill: var(--gold);
-  stroke: var(--dark);
+.map-label-backplate {
+  fill: rgba(242, 222, 180, 0.94);  stroke: #cdb28a;  stroke-width: 3;
 }
-
 .tip-strip {
-  display: grid;
-  grid-template-columns: 220px minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 18px;
-  margin-top: 22px;
-  padding: 16px 19px;
-  border: 2px solid var(--gold);
-  border-radius: 9px;
-  background: rgba(205, 178, 138, 0.72);
+  display: grid;  grid-template-columns: 220px minmax(0, 1fr) auto;  align-items: center;  gap: 18px;  margin-top: 22px;  padding: 16px 19px;  border: 2px solid var(--gold);  border-radius: 9px;  background: rgba(205, 178, 138, 0.72);
 }
-
 .tip-strip h2, .tip-strip p {
   margin: 0;
 }
-
 .tip-strip h2 {
-  color: var(--dark);
-  font-size: 17px;
+  color: var(--dark);  font-size: 17px;
 }
-
 .tip-strip > p {
-  text-align: center;
-  font-weight: 600;
+  text-align: center;  font-weight: 600;
 }
-
 button[type="button"], button[type="submit"] {
-  padding: 9px 13px;
-  border: 2px solid var(--gold);
-  border-radius: 6px;
-  background: var(--brown);
-  color: white;
-  font-weight: 700;
-  box-shadow: 0 3px 7px rgba(90, 58, 20, 0.12);
-  transition: background 150ms ease, transform 150ms ease;
+  padding: 9px 13px;  border: 2px solid var(--gold);  border-radius: 6px;  background: var(--brown);  color: white;  font-weight: 700;  box-shadow: 0 3px 7px rgba(90, 58, 20, 0.12);  transition: background 150ms ease, transform 150ms ease;
 }
-
 button[type="button"]:hover, button[type="submit"]:hover {
-  background: var(--coral);
-  transform: translateY(-1px);
+  background: var(--coral);  transform: translateY(-1px);
 }
-
-/* Shared section-page styles */
+button.document-toggle:hover, button.document-toggle:focus-visible {
+  background: var(--dark);
+}
 .guide-view[hidden] {
   display: none;
 }
-
 .page-heading {
-  margin-bottom: 28px;
-  text-align: center;
+  margin-bottom: 28px;  text-align: center;
 }
-
 .page-heading h1 {
-  margin: 3px 0 6px;
-  color: var(--dark);
-  font-size: clamp(32px, 5vw, 54px);
-  line-height: 1.2;
+  margin: 3px 0 6px;  color: var(--dark);  font-size: clamp(32px, 5vw, 54px);  line-height: 1.2;
 }
-
 .promise {
-  max-width: 760px;
-  margin: 0 auto;
-  font-weight: 600;
+  max-width: 760px;  margin: 0 auto;  font-weight: 600;
 }
-
 .section-title {
-  margin: 30px 0 13px;
-  padding-bottom: 7px;
-  border-bottom: 3px solid var(--gold);
-  color: var(--dark);
-  font-size: 23px;
+  margin: 30px 0 13px;  padding-bottom: 7px;  border-bottom: 3px solid var(--gold);  color: var(--dark);  font-size: 23px;
 }
-
 .card-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  display: grid;  grid-template-columns: repeat(3, minmax(0, 1fr));  gap: 14px;
 }
-
 .card {
-  padding: 17px;
-  border: 2px solid var(--gold);
-  border-radius: 9px;
-  background: var(--tan);
-  box-shadow: 0 4px 10px rgba(90, 58, 20, 0.1);
+  padding: 17px;  border: 2px solid var(--gold);  border-radius: 9px;  background: var(--tan);  box-shadow: 0 4px 10px rgba(90, 58, 20, 0.1);
 }
-
 .card h2, .card h3 {
-  margin: 0 0 8px;
-  color: var(--dark);
-  font-size: 17px;
+  margin: 0 0 8px;  color: var(--dark);  font-size: 17px;
 }
-
 .card p {
   margin: 0;
 }
-
+.content-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.content-tab {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px;
+  border: 2px solid var(--gold);
+  border-radius: 6px;
+  background: var(--brown);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  white-space: normal;
+}
+.content-tab[aria-selected="true"] {
+  background: var(--coral);
+}
+.content-tab:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 3px;
+}
+.content-panel {
+  padding: 17px;
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  background: var(--tan);
+}
+.content-panel[hidden] {
+  display: none;
+}
 .card-wide {
   grid-column: 1 / -1;
 }
-
 .number-list, .plain-list {
   padding-left: 23px;
 }
-
 .number-list li, .plain-list li {
   margin-bottom: 8px;
 }
-
 .document-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 9px;
+  display: grid;  grid-template-columns: repeat(2, minmax(0, 1fr));  gap: 9px;
 }
-
 .document-card {
-  overflow: hidden;
-  border: 1px solid var(--gold);
-  border-radius: 6px;
-  background: var(--cream);
+  overflow: hidden;  border: 1px solid var(--gold);  border-radius: 6px;  background: var(--cream);
 }
-
 .document-toggle {
-  width: 100%;
-  border-radius: 0 !important;
-  text-align: left;
+  width: 100%;  border-radius: 0 !important;  text-align: left;
 }
-
 .document-details {
-  display: none;
-  padding: 9px 12px;
+  display: none;  padding: 9px 12px;
 }
-
 .document-details p {
   margin: 5px 0;
 }
-
 .document-card.expanded .document-details {
   display: block;
 }
-
 .tool-section {
-  margin-top: 32px;
-  padding: 22px;
-  border: 2px solid var(--gold);
-  border-radius: 9px;
-  background: rgba(205, 178, 138, 0.55);
+  margin-top: 32px;  padding: 22px;  border: 2px solid var(--gold);  border-radius: 9px;  background: rgba(205, 178, 138, 0.55);
 }
-
 .tool-section h2 {
-  margin-top: 0;
-  color: var(--dark);
+  margin-top: 0;  color: var(--dark);
 }
-
 .tool-counter, .all-done, .tool-result {
   font-weight: 700;
 }
-
 .all-done {
   color: var(--green);
 }
-
 .checklist {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
+  display: grid;  grid-template-columns: repeat(2, minmax(0, 1fr));  gap: 8px;
 }
-
 .checklist label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px;
-  border: 1px solid var(--gold);
-  border-radius: 6px;
-  background: var(--cream);
-  cursor: pointer;
+  display: flex;  align-items: center;  gap: 8px;  padding: 9px;  border: 1px solid var(--gold);  border-radius: 6px;  background: var(--cream);  cursor: pointer;
 }
-
 .gpa-scale-list > div {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px;
-  border: 1px solid var(--gold);
-  border-radius: 6px;
-  background: var(--cream);
+  display: flex;  align-items: center;  gap: 8px;  padding: 9px;  border: 1px solid var(--gold);  border-radius: 6px;  background: var(--cream);
 }
-
 .scale-note {
-  margin-bottom: 0;
-  font-size: 0.9rem;
+  margin-bottom: 0;  font-size: 0.9rem;
 }
-
 .checklist input, .task-list input[type="checkbox"] {
-  width: auto;
-  accent-color: var(--green);
+  width: auto;  accent-color: var(--green);
 }
-
 .grade-rows {
-  display: grid;
-  gap: 9px;
-  margin: 14px 0;
+  display: grid;  gap: 9px;  margin: 14px 0;
 }
-
 .grade-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  display: grid;  grid-template-columns: 1fr 1fr;  gap: 10px;
 }
-
 .grade-row label, .budget-settings label {
   font-weight: 700;
 }
-
 input {
-  width: 100%;
-  margin-top: 4px;
-  padding: 10px;
-  border: 2px solid var(--tan);
-  border-radius: 6px;
-  background: #fffaf0;
-  color: var(--text);
+  width: 100%;  margin-top: 4px;  padding: 10px;  border: 2px solid var(--tan);  border-radius: 6px;  background: #fffaf0;  color: var(--text);
 }
-
 .budget-settings, .task-form {
-  display: flex;
-  align-items: end;
-  gap: 10px;
+  display: flex;  align-items: end;  gap: 10px;
 }
-
 .budget-settings label {
   flex: 1;
 }
-
 .budget-summary {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 9px;
-  margin: 17px 0;
+  display: grid;  grid-template-columns: repeat(4, minmax(0, 1fr));  gap: 9px;  margin: 17px 0;
 }
-
 .budget-summary-pair {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-
 .budget-summary div {
-  padding: 11px 8px;
-  border: 2px solid var(--gold);
-  border-radius: 7px;
-  background: var(--cream);
-  text-align: center;
+  padding: 11px 8px;  border: 2px solid var(--gold);  border-radius: 7px;  background: var(--cream);  text-align: center;
 }
-
 .budget-summary span, .budget-summary strong {
   display: block;
 }
-
 .budget-summary strong {
   color: var(--green);
 }
-
 .task-form input {
   flex: 1;
 }
-
 .task-list {
-  margin: 12px 0 0;
-  padding: 0;
-  list-style: none;
+  margin: 12px 0 0;  padding: 0;  list-style: none;
 }
-
 .task-list li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 7px;
-  padding: 9px;
-  border: 1px solid var(--gold);
-  border-radius: 6px;
-  background: var(--cream);
+  display: flex;  align-items: center;  justify-content: space-between;  gap: 10px;  margin-bottom: 7px;  padding: 9px;  border: 1px solid var(--gold);  border-radius: 6px;  background: var(--cream);
 }
-
 .task-list label {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
+  display: flex;  flex: 1;  align-items: center;  gap: 8px;  cursor: pointer;
 }
-
 .task-list li.done span {
-  text-decoration: line-through;
-  opacity: 0.65;
+  text-decoration: line-through;  opacity: 0.65;
 }
-
 .error-message {
-  min-height: 24px;
-  color: #8d3026;
-  font-weight: 700;
+  min-height: 24px;  color: #8d3026;  font-weight: 700;
 }
-
 .text-link {
-  display: inline-block;
-  margin-top: 10px;
-  color: var(--brown);
-  font-weight: 700;
+  display: inline-block;  margin-top: 10px;  color: var(--brown);  font-weight: 700;
 }
-
 .text-link:hover {
   color: var(--coral);
 }
-
 footer {
-  padding: 16px;
-  background: var(--brown);
-  color: white;
-  text-align: center;
-  font-size: 11px;
+  min-height: 46px;  display: flex;  align-items: center;  justify-content: center;  padding: 8px 16px;  border-top: 4px solid var(--dark);  background: var(--brown);  color: var(--gold);  font-size: 11px;  font-weight: 700;  letter-spacing: 1.5px;  text-align: center;  box-shadow: 0 -6px 16px rgba(90, 58, 20, 0.24);
 }
-
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  position: absolute;  width: 1px;  height: 1px;  padding: 0;  overflow: hidden;  clip: rect(0, 0, 0, 0);  white-space: nowrap;  border: 0;
 }
-
 @media (max-width: 900px) {
   .home-columns {
-    grid-template-columns: 1fr;
-    gap: 32px;
+    grid-template-columns: 1fr;  gap: 32px;
   }
-
   .compass-wrapper {
     width: min(410px, 80vw);
   }
-
   .card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
   .about-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
-
 @media (max-width: 600px) {
   .top-bar {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 5px;
+    align-items: flex-start;  flex-direction: column;  gap: 5px;
   }
-
   nav {
-    flex-wrap: wrap;
-    gap: 5px 8px;
+    flex-wrap: wrap;  gap: 5px 8px;
   }
-
   .dropdown-menu {
-    right: auto;
-    left: 0;
+    right: auto;  left: 0;
   }
-
   .home-main, .page-main {
-    width: 92%;
-    padding-top: 22px;
+    width: 92%;  padding-top: 22px;
   }
-
   .home-intro h1 {
-    font-size: 30px;
+    font-size: 28px;
   }
-
   .compass-wrapper {
     width: min(350px, 78vw);
   }
-
   .compass-button {
-    min-height: 28px;
-    padding: 4px 7px;
-    font-size: 7px;
+    min-height: 28px;  padding: 4px 7px;  font-size: 7px;
   }
-
   .compass-center {
     min-width: 95px;
   }
-
   .card-grid, .document-list, .checklist, .budget-summary {
     grid-template-columns: 1fr;
   }
-
   .grade-row {
     grid-template-columns: 1fr;
   }
-
   .budget-settings, .task-form {
-    align-items: stretch;
-    flex-direction: column;
+    align-items: stretch;  flex-direction: column;
   }
-
   .budget-settings label {
     width: 100%;
   }
-
   .tip-strip {
-    grid-template-columns: 1fr;
-    text-align: center;
+    grid-template-columns: 1fr;  text-align: center;
   }
 }
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;  transition-duration: 0.01ms !important;
   }
 }
-
 .home-main {
-  width: min(1400px, 96%);
-  margin: auto;
-  padding: 22px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: min(1400px, 96%);  margin: auto;  padding: 14px 0 30px;  display: flex;  flex-direction: column;  align-items: center;
 }
-
 .home-intro {
-  margin-bottom: 12px;
-  padding: 0 12px;
+  width: 100%;  max-width: none;  margin-bottom: 32px;  padding: 8px 20px;  border: 1px solid rgba(132, 72, 26, 0.16);  border-radius: 16px;  background: rgba(255, 248, 232, 0.55);  box-shadow: 0 8px 20px rgba(90, 58, 20, 0.1);
 }
-
 .home-intro .eyebrow {
-  color: var(--brown);
+  color: var(--brown);  font-size: 10px;  letter-spacing: 1.5px;
 }
-
+.home-intro > p:last-child {
+  max-width: 900px;  margin: 0 auto;  text-wrap: balance;
+}
+.no-wrap {
+  white-space: nowrap;
+}
 .home-columns {
-  width: 100%;
-  display: grid;
-  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.3fr);
-  align-items: center;
-  gap: clamp(24px, 5vw, 64px);
+  width: 100%;  display: grid;  grid-template-columns: minmax(560px, 0.9fr) minmax(0, 1.3fr);  align-items: center;  gap: clamp(120px, 8vw, 130px);
 }
-
-.compass-column,
-.map-column {
+.compass-column, .map-column {
   min-width: 0;
 }
-
 .compass-wrapper {
-  position: relative;
-  width: min(500px, 100%);
-  aspect-ratio: 1;
-  margin: 0 auto;
-  transform: translateX(-45px);
+  --compass-label-gap: 8px;  --compass-button-height: 40px;  position: relative;  top: 12px;  width: min(460px, 100%);  aspect-ratio: 1;  margin: 0 auto;  transform: translateX(28px);
 }
-
 .compass-svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 8px 10px rgba(90, 58, 20, 0.2));
+  display: block;  width: 100%;  height: 100%;  filter: drop-shadow(0 13px 16px rgba(90, 58, 20, 0.26));
 }
-
 #compassRose {
-  transform-box: view-box;
-  transform-origin: 250px 250px;
-  transition: transform 650ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  transform-box: view-box;  transform-origin: 250px 250px;  transition: transform 650ms cubic-bezier(0.2, 0.75, 0.25, 1);
 }
-
+#selectedCompassNeedle {
+  transform-box: view-box;  transform-origin: 250px 250px;  transition: transform 650ms cubic-bezier(0.2, 0.75, 0.25, 1), opacity 120ms ease;
+}
 .compass-letter {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 24px;  font-weight: 700;
 }
-
-/* Small oval compass buttons. Translate keeps them in place while they zoom. */
 .compass-button {
-  position: absolute;
-  z-index: 3;
-  min-height: 29px;
-  padding: 5px 9px;
-  border: 2px solid var(--gold);
-  border-radius: 999px;
-  background: var(--brown);
-  color: white;
-  font-family: "Cinzel", Georgia, serif;
-  font-size: 8px;
-  font-weight: 700;
-  line-height: 1.1;
-  white-space: nowrap;
-  box-shadow: 0 3px 7px rgba(90, 58, 20, 0.2);
-  transition: transform 150ms ease, background 150ms ease;
+  position: absolute;  z-index: 3;  min-height: 40px;  padding: 8px 14px;  border: 2px solid var(--gold);  border-radius: 999px;  background: var(--brown);  color: white;  font-family: "Cinzel", Georgia, serif;  font-size: 12px;  font-weight: 700;  line-height: 1.1;  text-decoration: none;  white-space: nowrap;  box-shadow: 0 5px 10px rgba(90, 58, 20, 0.26);  transition: transform 150ms ease, background 150ms ease;
 }
-
 .compass-north {
-  top: -5px;
-  left: 50%;
-  translate: -50% 0;
+  top: calc(2.4% - var(--compass-label-gap) - var(--compass-button-height));  left: 50%;  translate: -50% 0;
 }
-
 .compass-south {
-  bottom: -5px;
-  left: 50%;
-  translate: -50% 0;
+  bottom: calc(2.4% - var(--compass-label-gap) - var(--compass-button-height));  left: 50%;  translate: -50% 0;
 }
-
 .compass-west {
-  top: 50%;
-  left: -12px;
-  translate: -50% -50%;
+  top: 50%;  left: auto;  right: calc(100% - 2.4% + var(--compass-label-gap));  translate: 0 -50%;
 }
-
 .compass-east {
-  top: 50%;
-  right: -12px;
-  translate: 50% -50%;
+  top: 50%;  left: calc(100% - 2.4% + var(--compass-label-gap));  right: auto;  min-width: 126px;  white-space: normal;  line-height: 1.05;  text-align: center;  translate: 0 -50%;
 }
-
 .compass-center {
-  top: 50%;
-  left: 50%;
-  min-width: 104px;
-  translate: -50% -50%;
+  top: 50%;  left: 50%;  min-width: 136px;  padding: 9px 14px;  translate: -50% -50%;
 }
-
-.compass-button:hover,
-.compass-button:focus-visible,
-.compass-button.active {
-  background: var(--coral);
-  transform: scale(1.06);
+.compass-button:hover, .compass-button:focus-visible, .compass-button.active {
+  background: var(--coral);  transform: scale(1.06);
 }
-
 .compass-button:focus-visible {
-  outline: 3px solid var(--coral);
-  outline-offset: 3px;
+  outline: 3px solid var(--coral);  outline-offset: 3px;
 }
-
-/* Collapsible preview panel below the compass. */
 .guide-panel {
-  display: grid;
-  grid-template-rows: 0fr;
-  opacity: 0;
-  margin-top: 0;
-  border: 0 solid var(--gold);
-  border-radius: 8px;
-  background: var(--tan);
-  transition:
-    grid-template-rows 250ms ease,
-    opacity 200ms ease,
-    margin-top 250ms ease,
-    border-width 250ms ease;
+  display: grid;  grid-template-rows: 0fr;  opacity: 0;  margin-top: 0;  border: 0 solid var(--gold);  border-radius: 8px;  background: var(--tan);  transition: grid-template-rows 250ms ease, opacity 200ms ease, margin-top 250ms ease, border-width 250ms ease;
 }
-
 .guide-panel.is-open {
-  grid-template-rows: 1fr;
-  opacity: 1;
-  margin-top: 16px;
-  border-width: 2px;
+  grid-template-rows: 1fr;  opacity: 1;  margin-top: 16px;  border-width: 2px;
 }
-
 .guide-panel-inner {
-  min-height: 0;
-  overflow: hidden;
+  min-height: 0;  overflow: hidden;
 }
-
 .guide-panel-content {
   padding: 0 15px;
 }
-
 .guide-panel.is-open .guide-panel-content {
   padding: 13px 15px;
 }
-
 .guide-panel h2 {
-  margin: 0 0 5px;
-  color: var(--dark);
-  font-size: 18px;
+  margin: 0 0 5px;  color: var(--dark);  font-size: 18px;
 }
-
 .guide-panel p {
-  margin: 0 0 8px;
-  font-size: 13px;
+  margin: 0 0 8px;  font-size: 13px;
 }
-
 .guide-link {
-  display: inline-block;
-  color: var(--brown);
-  font-weight: 700;
+  display: inline-block;  color: var(--brown);  font-weight: 700;
 }
-
 .guide-link:hover {
   color: var(--coral);
 }
-
-/* Keep the map large and let it shrink with the screen. */
 .map-frame {
-  overflow: hidden;
-  border: 3px solid var(--brown);
-  border-radius: 12px;
-  background: #e4c77d;
-  box-shadow: 0 7px 15px rgba(90, 58, 20, 0.16);
+  overflow: hidden;  border: 3px solid var(--brown);  border-radius: 12px;  background: #e4c77d;  box-shadow: 0 13px 24px rgba(90, 58, 20, 0.24);
 }
-
 .map-svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1920 / 1080;
+  display: block;  width: 100%;  height: auto;  aspect-ratio: 1920 / 1080;
 }
-
 .map-fallback {
   pointer-events: none;
 }
-
 .map-label {
-  fill: var(--dark);
-  font-family: "Cinzel", Georgia, serif;
-  font-size: 15px;
-  font-weight: 700;
-  paint-order: stroke;
-  stroke: var(--cream);
-  stroke-width: 6px;
-  stroke-linejoin: round;
-  pointer-events: none;
+  fill: var(--dark);  font-family: "Cinzel", Georgia, serif;  font-size: 40px;  font-weight: 700;  paint-order: stroke;  stroke: var(--cream);  stroke-width: 2px;  stroke-linejoin: round;  text-anchor: middle;  pointer-events: none;
 }
-
 .map-label-long {
-  font-size: 13px;
+  font-size: 32px;
 }
-
-.map-hotspot {
-  fill: var(--coral);
-  stroke: var(--brown);
-  stroke-width: 3;
-  transition: fill 150ms ease, stroke 150ms ease;
+.map-label-transportation {
+  font-size: 36px;
 }
-
-.map-svg a:hover .map-hotspot,
-.map-svg a:focus-visible .map-hotspot {
-  fill: var(--gold);
-  stroke: var(--dark);
+.map-column {
+  position: relative;  top: 12px;  align-self: center;
 }
-
+.guide-cards {
+  width: 100%;  margin-top: 60px;  padding: 18px 20px 20px;  border: 1px solid rgba(132, 72, 26, 0.2);  border-radius: 16px;  background: rgba(255, 248, 232, 0.58);  box-shadow: 0 8px 20px rgba(90, 58, 20, 0.1);
+}
+.guide-cards h2 {
+  margin: 0 0 14px;  color: var(--dark);  font-size: clamp(18px, 2vw, 24px);  text-align: center;
+}
+.guide-card-grid {
+  display: grid;  grid-template-columns: repeat(5, minmax(0, 1fr));  gap: 12px;
+}
+.guide-card {
+  min-width: 0;  display: flex;  flex-direction: column;  align-items: flex-start;  gap: 9px;  padding: 14px;  border: 1px solid rgba(132, 72, 26, 0.18);  border-radius: 12px;  background: rgba(255, 252, 242, 0.85);  color: var(--text);  box-shadow: 0 4px 10px rgba(90, 58, 20, 0.08);
+}
+.guide-card-heading {
+  min-width: 0;  display: flex;  align-items: center;  gap: 10px;
+}
+.guide-card-icon {
+  width: 34px;  height: 34px;  display: grid;  flex: 0 0 auto;  place-items: center;  border-radius: 50%;  background: var(--brown);  color: var(--gold);
+}
+.guide-card-icon svg {
+  width: 19px;  height: 19px;  fill: none;  stroke: currentColor;  stroke-width: 1.8;  stroke-linecap: round;  stroke-linejoin: round;
+}
+.guide-card-title {
+  min-width: 0;  color: var(--dark);  font-family: "Cinzel", Georgia, serif;  font-size: 13px;  font-weight: 700;  line-height: 1.2;  overflow-wrap: anywhere;
+}
+.guide-card-description {
+  font-size: 10px;  line-height: 1.4;
+}
+@media (min-width: 1200px) and (max-width: 1430px) {
+  .home-columns {
+    grid-template-columns: minmax(520px, 0.9fr) minmax(0, 1.3fr);  gap: 130px;
+  }
+  .compass-wrapper {
+    width: min(440px, calc(25vw + 100px));  transform: translateX(28px);
+  }
+}
+@media (max-width: 1200px) {
+  .home-columns {
+    grid-template-columns: 1fr;  gap: 56px;
+  }
+  .compass-wrapper {
+    width: min(420px, 84vw);  transform: none;
+  }
+  .guide-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 @media (max-width: 850px) {
+  .guide-layout.has-compass {
+    grid-template-columns: 1fr;
+  }
+  .guide-compass {
+    position: relative;  width: min(220px, 68vw);  margin: 0 auto 24px;
+  }
   .home-main {
     align-items: flex-start;
   }
-
   .home-columns {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    grid-template-columns: 1fr;  gap: 56px;
   }
-
   .compass-wrapper {
-    width: min(460px, 84vw);
-    transform: none;
+    width: min(380px, calc(100vw - 288px));  transform: none;
   }
-
+  .home-intro {
+    padding: 8px 16px;
+  }
+  .compass-button {
+    min-height: 34px;  padding: 7px 10px;  font-size: 10px;
+  }
+  .compass-wrapper {
+    --compass-button-height: 34px;
+  }
+  .compass-center {
+    min-width: 126px;
+  }
   .map-column {
     width: 100%;
   }
 }
-
 @media (max-width: 500px) {
   .home-main {
-    width: 90%;
-    padding: 18px 0;
+    width: 90%;  padding: 18px 0;
   }
-
   .compass-wrapper {
-    width: min(360px, 78vw);
+    left: -16px;  width: min(286px, calc(100vw - 214px));  --compass-label-gap: 6px;
   }
-
   .compass-button {
-    min-height: 27px;
-    padding: 4px 7px;
-    font-size: 7px;
+    min-height: 32px;  padding: 6px 8px;  font-size: 9px;
   }
-
+  .compass-wrapper {
+    --compass-button-height: 32px;
+  }
   .compass-center {
-    min-width: 94px;
+    min-width: 116px;
   }
-
-  .compass-west {
-    left: 8px;
-    translate: 0 -50%;
+  .guide-cards {
+    padding: 16px 12px;
   }
-
-  .compass-east {
-    right: 8px;
-    translate: 0 -50%;
+  .guide-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));  gap: 9px;
   }
-
-  .map-label {
-    font-size: 12px;
-  }
-
-  .map-label-long {
-    font-size: 10px;
+  .guide-card {
+    padding: 12px;
   }
 }
-
+@media (max-width: 420px) {
+  .home-columns {
+    gap: 56px;
+  }
+  .compass-wrapper {
+    width: min(252px, calc(100vw - 168px));  --compass-label-gap: 4px;
+  }
+  .compass-button {
+    min-height: 28px;  padding: 5px 6px;  font-size: 7px;
+  }
+  .compass-wrapper {
+    --compass-button-height: 28px;  --compass-label-gap: 6px;
+  }
+  .compass-center {
+    min-width: 100px;  font-size: 8px;
+  }
+  .compass-east {
+    min-width: 0;  max-width: 105px;
+  }
+  .guide-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 350px) {
+  .home-columns {
+    gap: 32px;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  #compassRose,
-  .compass-button,
-  .guide-panel {
+  #compassRose, #selectedCompassNeedle, .compass-button, .guide-panel {
     transition: none;
+  }
+}
+.home-main .home-columns {
+  gap: 160px;
+}
+.home-main .compass-wrapper {
+  --compass-button-height: 44px;  transform: translateX(44px);
+}
+.home-main .compass-button {
+  box-sizing: border-box;  width: 126px;  height: 44px;  min-height: 44px;  padding: 5px 8px;  display: flex;  align-items: center;  justify-content: center;  font-size: 10px;  line-height: 1.05;  white-space: normal;
+}
+.home-main .compass-east {
+  min-width: 0;  max-width: none;
+}
+.home-main .compass-center {
+  min-width: 0;  padding: 5px 8px;
+}
+@media (min-width: 1200px) and (max-width: 1430px) {
+  .home-main .compass-wrapper {
+    transform: translateX(60px);
+  }
+}
+@media (max-width: 850px) {
+  .home-main .compass-wrapper {
+    transform: none;
+  }
+}
+@media (max-width: 1200px) {
+  .home-main .home-columns {
+    gap: 56px;
+  }
+}
+@media (max-width: 500px) {
+  .home-main .compass-wrapper {
+    --compass-button-height: 30px;  transform: translateX(30px);
+  }
+  .home-main .compass-button {
+    width: 75px;  height: 30px;  min-height: 30px;  padding: 2px;  font-size: 7px;
+  }
+  .home-main .compass-center {
+    padding: 2px;  font-size: 7px;
+  }
+}
+@media (max-width: 350px) {
+  .home-main .home-columns {
+    gap: 32px;
+  }
+}
+@media (max-width: 767px) {
+  .content-tabs {
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
   }
 }

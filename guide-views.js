@@ -1,4 +1,6 @@
 let guideViews = document.querySelectorAll(".guide-view");
+let guideCompass = document.getElementById("guideCompass");
+let guideLayout = guideCompass ? guideCompass.parentElement : null;
 
 function showGuideView() {
   let selectedId = window.location.hash.slice(1);
@@ -9,9 +11,17 @@ function showGuideView() {
   guideViews.forEach(function (view) {
     view.hidden = view !== selectedView;
   });
+
+  if (guideCompass && guideLayout) {
+    let direction = selectedView.dataset.compassDirection || "";
+    guideCompass.hidden = direction === "";
+    guideCompass.dataset.direction = direction;
+    guideLayout.classList.toggle("has-compass", direction !== "");
+  }
 }
 
 if (guideViews.length > 0) {
   window.addEventListener("hashchange", showGuideView);
+  window.addEventListener("pageshow", showGuideView);
   showGuideView();
 }

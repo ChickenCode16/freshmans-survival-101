@@ -7,15 +7,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=nav-polish-1">
+  <link rel="stylesheet" href="css/style.css?v=homepage-visual-31">
 </head>
 <body>
   <header class="top-bar">
     <a class="logo" href="index.html">Freshman's Survival 101</a>
     <nav aria-label="Main navigation">
       <a href="index.html">Home</a><a href="info.html" aria-current="page">Info</a>
-      <div class="dropdown"><button class="dropdown-button" type="button">Pages</button>
-        <div class="dropdown-menu">
+      <div class="dropdown"><button class="dropdown-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="guides-menu">Guides</button>
+        <div class="dropdown-menu" id="guides-menu">
           <a href="info.html#enrollment">Enrollment</a>
           <a href="info.html#syllabus">Syllabus</a>
           <a href="commuting.html#transportation">Transportation</a>
@@ -27,6 +27,25 @@
   </header>
 
   <main class="page-main">
+    <div class="guide-layout">
+      <aside class="guide-compass" id="guideCompass" aria-label="Guide compass" hidden>
+        <svg viewBox="0 0 220 220" aria-hidden="true" focusable="false">
+          <circle class="guide-compass-rim" cx="110" cy="110" r="96"/>
+          <circle class="guide-compass-inner" cx="110" cy="110" r="82"/>
+          <path class="guide-compass-point" d="M110 22 L96 105 L110 98 L124 105 Z"/>
+          <path class="guide-compass-point" d="M198 110 L115 96 L122 110 L115 124 Z"/>
+          <path class="guide-compass-point" d="M110 198 L124 115 L110 122 L96 115 Z"/>
+          <path class="guide-compass-point" d="M22 110 L105 124 L98 110 L105 96 Z"/>
+          <path class="guide-compass-needle" d="M110 22 L98 105 L110 98 L122 105 Z"/>
+          <text class="guide-compass-label" x="110" y="46">N</text>
+          <text class="guide-compass-label" x="176" y="115">E</text>
+          <text class="guide-compass-label" x="110" y="184">S</text>
+          <text class="guide-compass-label" x="44" y="115">W</text>
+        </svg>
+        <a class="guide-compass-home" href="index.html">GO BACK<br>TO HOME</a>
+        <p class="guide-compass-hint">Tap the hub to return to the homepage.</p>
+      </aside>
+      <div class="guide-content">
     <section class="guide-view" id="overview">
     <section class="page-heading">
       <p class="eyebrow">About the Voyage</p>
@@ -36,37 +55,30 @@
 
     <section class="card-grid about-grid">
       <article class="card">
-        <h2>What This Site Is</h2>
-        <p>A guide to the everyday parts of college, with practical advice about what to expect, how to prepare, and mistakes to avoid.</p>
+        <h2>About This Site</h2>
+        <p>This site helps incoming freshmen prepare for college life with practical guides and tools.</p>
       </article>
       <article class="card">
-        <h2>Who It Is For</h2>
-        <p>Incoming freshmen, transfer students, and anyone beginning a new campus adventure.</p>
+        <h2>How to Use This Site</h2>
+        <ol class="number-list">
+          <li>Go to the home page.</li>
+          <li>Click a spot on the compass or the map.</li>
+          <li>Read the guide and use the tools on that page.</li>
+        </ol>
       </article>
       <article class="card">
-        <h2>Members</h2>
+        <h2>Quick Tips for Freshmen</h2>
         <ul class="plain-list">
-          <li>Aguinaldo, Andrei Emmanuel</li>
-          <li>Esteves, Mario Baltazar</li>
-          <li>Sabado, Aaron Karl</li>
+          <li>Arrive early on your first day.</li>
+          <li>Keep a copy of your schedule.</li>
+          <li>Ask upperclassmen for advice.</li>
         </ul>
       </article>
     </section>
 
-    <section>
-      <h2 class="section-title">Choose a Guide</h2>
-      <div class="card-grid">
-        <article class="card"><h3>Enrollment</h3><p>Prepare for enrollment and organize the documents you may need.</p><a class="text-link" href="info.html#enrollment">Explore Enrollment →</a></article>
-        <article class="card"><h3>Syllabus</h3><p>Understand course requirements, schedules, grading, and policies.</p><a class="text-link" href="info.html#syllabus">Explore Syllabus →</a></article>
-        <article class="card"><h3>Transportation</h3><p>Plan your commute, think about safety, and prepare a backup route.</p><a class="text-link" href="commuting.html#transportation">Explore Transportation →</a></article>
-        <article class="card"><h3>Budget</h3><p>Set a daily spending target and track small expenses.</p><a class="text-link" href="commuting.html#budget">Explore Budget →</a></article>
-        <article class="card"><h3>Time Management</h3><p>Organize college tasks, study time, breaks, and rest.</p><a class="text-link" href="commuting.html#time-management">Explore Time Management →</a></article>
-      </div>
     </section>
 
-    </section>
-
-    <section class="guide-view" id="enrollment">
+    <section class="guide-view" id="enrollment" data-compass-direction="north">
     <section class="page-heading">
       <p class="eyebrow">Your First Step Ashore</p>
       <h1>Enrollment</h1>
@@ -153,26 +165,37 @@
     </section>
     </section>
 
-    <section class="guide-view" id="syllabus">
+    <section class="guide-view" id="syllabus" data-compass-direction="south">
     <section class="page-heading">
       <p class="eyebrow">Read the Course Map</p>
       <h1>Syllabus</h1>
       <p class="promise">Use your syllabus to plan ahead and understand what each course expects.</p>
     </section>
 
-    <section>
-      <h2 class="section-title">Core Information</h2>
-      <div class="card-grid">
-        <article class="card"><h3>What Is a Syllabus?</h3><p>A syllabus is a course guide explaining what you will study, what work you will do, and how the class is organized.</p></article>
-        <article class="card"><h3>Why It Matters</h3><p>It helps you check deadlines, rules, and requirements instead of relying on memory.</p></article>
-        <article class="card"><h3>How to Read One</h3><p>Start with course expectations and grading. Then check the schedule and policies and write important dates down.</p></article>
-        <article class="card"><h3>Course Description</h3><p>Introduces the subject and the main skills you are expected to gain.</p></article>
-        <article class="card"><h3>Topics and Schedule</h3><p>Lists lessons and activities. The order may change, so listen for updates.</p></article>
-        <article class="card"><h3>Grading System</h3><p>Explains the types of work used to calculate your grade and percentage.</p></article>
-        <article class="card"><h3>Quizzes and Projects</h3><p>Lists assignments, projects, quizzes, and how to submit them.</p></article>
-        <article class="card"><h3>Class Participation</h3><p>Explains whether discussions, attendance, or activities are part of the course.</p></article>
-        <article class="card"><h3>Attendance and Late Work</h3><p>Check each instructor's rules in terms of class attendance.</p></article>
+    <section aria-labelledby="syllabus-information-title">
+      <h2 class="section-title" id="syllabus-information-title">Course Information</h2>
+      <div class="content-tabs" role="tablist" aria-label="Syllabus information">
+        <button class="content-tab" id="syllabus-tab-course-description" type="button" role="tab" aria-selected="true" aria-controls="syllabus-panel-course-description" tabindex="0">Course Description</button>
+        <button class="content-tab" id="syllabus-tab-grading-system" type="button" role="tab" aria-selected="false" aria-controls="syllabus-panel-grading-system" tabindex="-1">Grading System</button>
+        <button class="content-tab" id="syllabus-tab-attendance-late-work" type="button" role="tab" aria-selected="false" aria-controls="syllabus-panel-attendance-late-work" tabindex="-1">Attendance &amp; Late Work</button>
+        <button class="content-tab" id="syllabus-tab-schedule-deadlines" type="button" role="tab" aria-selected="false" aria-controls="syllabus-panel-schedule-deadlines" tabindex="-1">Schedule &amp; Deadlines</button>
+        <button class="content-tab" id="syllabus-tab-materials" type="button" role="tab" aria-selected="false" aria-controls="syllabus-panel-materials" tabindex="-1">Materials</button>
       </div>
+      <section class="content-panel" id="syllabus-panel-course-description" role="tabpanel" aria-labelledby="syllabus-tab-course-description" tabindex="0">
+        <p>This section explains what the course covers and the main ideas or skills students will learn. It outlines key topics and expected learning outcomes.</p>
+      </section>
+      <section class="content-panel" id="syllabus-panel-grading-system" role="tabpanel" aria-labelledby="syllabus-tab-grading-system" tabindex="0" hidden>
+        <p>Grades may include quizzes, activities, projects, and exams. Check the syllabus for each category's percentage and how the final grade is calculated.</p>
+      </section>
+      <section class="content-panel" id="syllabus-panel-attendance-late-work" role="tabpanel" aria-labelledby="syllabus-tab-attendance-late-work" tabindex="0" hidden>
+        <p>The syllabus lists absence limits and rules for late submissions. Policies vary by instructor, so check your instructor's requirements.</p>
+      </section>
+      <section class="content-panel" id="syllabus-panel-schedule-deadlines" role="tabpanel" aria-labelledby="syllabus-tab-schedule-deadlines" tabindex="0" hidden>
+        <p>Look for dates of major exams and submissions. Write deadlines in a planner and update it when your instructor announces changes.</p>
+      </section>
+      <section class="content-panel" id="syllabus-panel-materials" role="tabpanel" aria-labelledby="syllabus-tab-materials" tabindex="0" hidden>
+        <p>Review the required books, software, and supplies before the course starts. Ask your instructor what is required before buying anything.</p>
+      </section>
     </section>
 
     <section>
@@ -205,9 +228,14 @@
       <p class="scale-note">Scale meanings may vary by school; check your syllabus for the official grading system.</p>
     </section>
     </section>
+      </div>
+    </div>
   </main>
 
   <script src="guide-views.js"></script>
   <script src="enrollment.js"></script>
+  <script src="tabs.js"></script>
+  <script src="navigation.js"></script>
+  <footer>DLSU - Dasmarinas</footer>
 </body>
 </html>

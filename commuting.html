@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=nav-polish-1">
+  <link rel="stylesheet" href="css/style.css?v=homepage-visual-31">
   <link rel="stylesheet" href="css/commuting.css">
 </head>
 <body>
@@ -15,8 +15,8 @@
     <a class="logo" href="index.html">Freshman's Survival 101</a>
     <nav aria-label="Main navigation">
       <a href="index.html">Home</a><a href="info.html">Info</a>
-      <div class="dropdown"><button class="dropdown-button" type="button">Pages</button>
-        <div class="dropdown-menu">
+      <div class="dropdown"><button class="dropdown-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="guides-menu">Guides</button>
+        <div class="dropdown-menu" id="guides-menu">
           <a href="info.html#enrollment">Enrollment</a>
           <a href="info.html#syllabus">Syllabus</a>
           <a href="commuting.html#transportation" aria-current="page">Transportation</a>
@@ -28,8 +28,26 @@
   </header>
 
   <main class="commuting-main">
+    <div class="guide-layout">
+      <aside class="guide-compass" id="guideCompass" aria-label="Guide compass">
+        <svg viewBox="0 0 220 220" aria-hidden="true" focusable="false">
+          <circle class="guide-compass-rim" cx="110" cy="110" r="96"/>
+          <circle class="guide-compass-inner" cx="110" cy="110" r="82"/>
+          <path class="guide-compass-point" d="M110 22 L96 105 L110 98 L124 105 Z"/>
+          <path class="guide-compass-point" d="M198 110 L115 96 L122 110 L115 124 Z"/>
+          <path class="guide-compass-point" d="M110 198 L124 115 L110 122 L96 115 Z"/>
+          <path class="guide-compass-point" d="M22 110 L105 124 L98 110 L105 96 Z"/>
+          <path class="guide-compass-needle" d="M110 22 L98 105 L110 98 L122 105 Z"/>
+          <text class="guide-compass-label" x="110" y="46">N</text>
+          <text class="guide-compass-label" x="176" y="115">E</text>
+          <text class="guide-compass-label" x="110" y="184">S</text>
+          <text class="guide-compass-label" x="44" y="115">W</text>
+        </svg>
+        <a class="guide-compass-home" href="index.html">GO BACK<br>TO HOME</a>
+        <p class="guide-compass-hint">Tap the hub to return to the homepage.</p>
+      </aside>
     <div class="commuting-content">
-      <section class="guide-view" id="transportation">
+      <section class="guide-view" id="transportation" data-compass-direction="center">
       <section class="page-heading">
         <p class="eyebrow">The Route Ahead</p>
         <h1>Transportation</h1>
@@ -41,9 +59,28 @@
         <div class="card-grid">
           <article class="card"><h3>Leave Early</h3><p>Allow extra time for traffic, queues, weather, and unfamiliar entrances.</p></article>
           <article class="card"><h3>Expect Busy Hours</h3><p>Roads and public transport can be slower around school and work schedules.</p></article>
-          <article class="card"><h3>Keep Fare Ready</h3><p>Prepare small bills or a transit card. [REPLACE: LOCAL FARE DETAILS]</p></article>
+          <article class="card"><h3>Keep Fare Ready</h3><p>Prepare small bills or coins before entering the vehicle.</p></article>
           <article class="card"><h3>Look After Your Safety</h3><p>Choose well-lit places to wait and keep your belongings secure.</p></article>
         </div>
+      </section>
+
+      <section class="travel-time-estimates" aria-labelledby="travel-time-title">
+        <h2 class="section-title" id="travel-time-title">Estimated Travel Time to DLSU-D</h2>
+        <div class="card-grid">
+          <details class="card travel-time-card">
+            <summary><h3>From Bacoor</h3></summary>
+            <p>Estimated travel time: 45–60+ minutes.</p>
+          </details>
+          <details class="card travel-time-card">
+            <summary><h3>From Imus</h3></summary>
+            <p>Estimated travel time: 45–60 minutes.</p>
+          </details>
+          <details class="card travel-time-card">
+            <summary><h3>From Dasmariñas</h3></summary>
+            <p>Estimated travel time: 15–30 minutes.</p>
+          </details>
+        </div>
+        <p class="travel-time-note"><em>Travel times are estimates; your route, transport mode, and traffic can change them.</em></p>
       </section>
 
       <section>
@@ -67,7 +104,7 @@
 
       </section>
 
-      <section class="guide-view" id="budget">
+      <section class="guide-view" id="budget" data-compass-direction="west">
       <section class="page-heading">
       <p class="eyebrow">Guard the Treasure</p>
       <h1>Budget</h1>
@@ -129,7 +166,7 @@
 
       </section>
 
-      <section class="guide-view" id="time-management">
+      <section class="guide-view" id="time-management" data-compass-direction="east">
       <section class="page-heading">
       <p class="eyebrow">Command the Clock</p>
       <h1>Time Management</h1>
@@ -172,11 +209,27 @@
         <p>Start by marking your classes and deadlines, then set aside realistic study blocks. Include travel, meals, and sleep, and leave open time for breaks or unexpected changes. Review your plan once a week and adjust it when your workload changes.</p>
       </div>
     </section>
+
+    <section class="tool-section" aria-labelledby="task-planner-title">
+      <h2 id="task-planner-title">My Task List</h2>
+      <p>Add tasks, mark them complete, or remove them. Your list is saved in this browser.</p>
+      <form id="taskForm" class="task-form">
+        <label class="sr-only" for="taskInput">New task</label>
+        <input id="taskInput" name="task" type="text" maxlength="120" placeholder="Add a task" autocomplete="off" required>
+        <button id="addTaskButton" type="submit">Add Task</button>
+      </form>
+      <p id="taskStatus" class="tool-result" aria-live="polite"></p>
+      <ul id="taskList" class="task-list" aria-label="Your tasks"></ul>
+    </section>
       </section>
+    </div>
     </div>
   </main>
 
   <script src="guide-views.js"></script>
   <script src="budget.js"></script>
+  <script src="schedule.js"></script>
+  <footer>DLSU - Dasmarinas</footer>
+  <script src="navigation.js"></script>
 </body>
 </html>

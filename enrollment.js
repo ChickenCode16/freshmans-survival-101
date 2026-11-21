@@ -1,11 +1,3 @@
-// Element ids and classes needed:
-// documentChecklist
-// doneCounter
-// allDoneMessage
-// .document-card
-// .document-toggle
-
-// Edit this array to change the checklist.
 let documents = [
   "Birth Certificate (PSA)",
   "Report Card (Form 138)",
@@ -20,7 +12,6 @@ let checklist = document.getElementById("documentChecklist");
 let counter = document.getElementById("doneCounter");
 let allDoneMessage = document.getElementById("allDoneMessage");
 
-// This block lets visitors expand or collapse document details.
 document.querySelectorAll(".document-card").forEach(function (card) {
   let button = card.querySelector(".document-toggle");
 
@@ -30,7 +21,6 @@ document.querySelectorAll(".document-card").forEach(function (card) {
   });
 });
 
-// This block updates the number of checked documents.
 function updateCounter() {
   let boxes = checklist.querySelectorAll("input");
   let done = 0;
@@ -45,7 +35,6 @@ function updateCounter() {
   allDoneMessage.textContent = done === documents.length ? "ALL DONE" : "";
 }
 
-// This block builds the checklist from the documents array.
 documents.forEach(function (documentName) {
   let label = document.createElement("label");
   let checkbox = document.createElement("input");
